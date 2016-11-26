@@ -1,0 +1,9 @@
+<?xml version="1.0"?> 
+<!-- The above line is optional but is added to help the text editor provide 
+syntax highlighting -->
+<launch>
+< param name="robot_description" 
+   command="$(find xacro)/xacro.py '$(find iggy_description)/urdf/iggy_minimal.xacro'" />
+   
+   
+</launch>
