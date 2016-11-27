@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- The above line is optional but is added to help the text editor provide 
+syntax highlighting -->
+<launch>
+    <!-- Start Gazebo with an empty world -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch" />
+    
+    <!-- Generate the robot urdf and name it robot_description -->
+    <param name="robot_description" command="$(find xacro)/xacro $(find iggy_description)/urdf/iggy_minimal.urdf.xacro" />
+    
+    <!-- Spawn a robot into Gazebo -->
+    <node name="iggy" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model iggy -x 1 -y 1" />
+</launch>
