@@ -2,6 +2,9 @@
 <!-- The above line is optional but is added to help the text editor provide 
 syntax highlighting -->
 <launch>
+
+<arg name="use_teleop" default="true" />
+
     <!-- Start Gazebo with an empty world -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch" />
     
@@ -10,4 +13,20 @@ syntax highlighting -->
     
     <!-- Spawn a robot into Gazebo -->
     <node name="iggy" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model iggy -x 1 -y 1" />
+
+
+<group if="$(arg use_teleop)">
+    <arg name="joy_dev" default="/dev/input/js0" />
+    <!-- When using an Xbox 360 controller A is the trigger and the left joystick will move the robot -->
+    <node pkg="joy" type="joy_node" name="joy_node">
+      <param name="dev" value="$(arg joy_dev)" />
+      <param name="deadzone" value="0.3" />
+      <param name="autorepeat_rate" value="20" />
+    </node>
+  
+    <node pkg="teleop_twist_joy" name="teleop_twist_joy" type="teleop_node">
+      <remap from="/cmd_vel" to="/iggy/cmd_vel" /> 
+    </node>
+  </group>
+    
 </launch>

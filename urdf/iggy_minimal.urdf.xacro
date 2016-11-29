@@ -1,5 +1,33 @@
 <?xml version="1.0"?>
 <robot name="iggy" xmlns:xacro="http://www.ros.org/wiki/xacro" xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller">
+
+  <!-- PROPERTY LIST -->
+  <!--All units in m-kg-s-radians unit system -->
+  <property name="M_PI" value="3.1415926535897931" />
+  <property name="M_PI_2" value="1.570796327" />
+  <property name="DEG_TO_RAD" value="0.017453293" />
+
+  <!-- Main body radius and height -->
+  <!-- Main Body Cylinder base   -->
+  <property name="base_height" value="0.02" /> 
+  <property name="base_radius" value="0.15" /> 
+  <property name="base_mass" value="5" /> <!-- in kg-->
+
+
+
+  <!-- caster wheel radius and height -->
+  <!-- caster wheel mass -->
+  <property name="caster_f_height" value="0.04" /> 
+  <property name="caster_f_radius" value="0.025" /> 
+  <property name="caster_f_mass" value="0.5" /> <!-- in kg-->
+
+
+
+  <!-- caster wheel radius and height -->
+  <!-- caster wheel mass -->
+  <property name="caster_b_height" value="0.04" /> 
+  <property name="caster_b_radius" value="0.025" /> 
+  <property name="caster_b_mass" value="0.5" /> <!-- in kg-->
     <xacro:property name="PI" value="3.1415926535897931" />
     
     <xacro:property name="wheelbase" value="0.262" />    <!-- TODO UPDATE -->
@@ -68,11 +96,12 @@
             </actuator>
         </transmission>
     </xacro:macro>
+
+    
     
     <!-- TODO Create Caster to replace front wheels  -->
-    <xacro:wheel prefix="front_left">
-        <origin xyz="${wheelbase/2} ${track/2} ${wheel_vertical_offset}" rpy="0 0 0" />
-    </xacro:wheel>
+    
+    
     <xacro:wheel prefix="front_right">
         <origin xyz="${wheelbase/2} ${-track/2} ${wheel_vertical_offset}" rpy="0 0 0" />
     </xacro:wheel>
