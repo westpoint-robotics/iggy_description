@@ -1,0 +1,361 @@
+<?xml version="1.0"?>
+<robot name="iggy">
+
+
+<!--Links -->
+
+ <link name="base_footprint">
+    <inertial>
+      <mass value="0.0001"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <gazebo reference="base_footprint">
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+  <joint name="base_footprint_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0.08"/>
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+  </joint>
+
+<!--body -->
+
+  <link name="base_link">
+    <visual>
+      <geometry>
+         <box size=".92 .61 .31"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <box size=".92 .61 .31"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="5"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+    <gazebo reference="base_link">
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+  
+
+
+<!--Wheel Bases -->
+
+ <link name="front_wheel_base">
+    <visual>
+      <geometry>
+         <box size=".11 .61 .31"/>
+      </geometry>
+    </visual>
+     <collision>
+      <geometry>
+        <box size=".11 .61 .31"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+    <gazebo reference="front_wheel_base">
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+
+<link name="back_wheel_base">
+    <visual>
+      <geometry>
+         <box size=".11 .61 .31"/>
+      </geometry>
+    </visual>
+     <collision>
+      <geometry>
+        <box size=".11 .61 .31"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+    <gazebo reference="back_wheel_base">
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+
+
+<!--back wheels -->
+
+   <link name="blwheel">
+    <visual>
+      <geometry>
+        <cylinder length="0.05" radius="0.08"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="${3.14159/2} 0 0" />
+    </visual>
+     <collision>
+      <origin xyz="0 0 0" rpy="${3.14159/2} 0 0" />
+      <geometry>
+         <cylinder length="0.05" radius="0.08"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+    <gazebo reference="blwheel">
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+
+   <link name="brwheel">
+
+    <visual>
+      <geometry>
+        <cylinder length="0.05" radius="0.08"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="${3.14159/2} 0 0" />
+
+    </visual>
+
+     <collision>
+      <origin xyz="0 0 0" rpy="${3.14159/2} 0 0" />
+      <geometry>
+         <cylinder length="0.05" radius="0.08"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+
+  </link>
+    <gazebo reference="brwheel">
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+
+<!--Front Caster Wheels -->
+
+<!--
+  <link name="cflwheelold">
+    <visual>
+      <origin rpy="1.57079632679 0 0" xyz="0 0.02 0"/>
+      <geometry>
+        <sphere radius="0.08"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.08"/>
+      </geometry>
+      <origin rpy="1.57079632679 0 0" xyz="0 0.02 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
+    </inertial>
+  </link>
+ -->
+<link name="cflwheel">
+    <visual>
+      <origin rpy="1.57079632679 0 0" xyz="0 0.02 0"/>
+      <geometry>
+        <sphere radius="0.08"/>
+      </geometry>
+      
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.08"/>
+      </geometry>
+      <origin rpy="1.57079632679 0 0" xyz="0 0.02 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
+    </inertial>
+  </link>
+    <gazebo reference="cflwheel">
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+
+  <link name="cfrwheel">
+    <visual>
+      <origin rpy="1.57079632679 0 0" xyz="0 0.02 0"/>
+      <geometry>
+        <sphere radius="0.08"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.08"/>
+      </geometry>
+      <origin rpy="1.57079632679 0 0" xyz="0 0.02 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
+    </inertial>
+  </link>
+
+  <gazebo reference="cfrwheel">
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+
+<!--Screen -->
+
+
+  <link name="screen">
+    <visual>
+      <geometry>
+         <box size=".4 .61 .4"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <box size=".4 .61 .4"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+    <gazebo reference="screen">
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+
+<!--Velodyne Laser Mount -->
+
+
+  <link name="laser_mount">
+    <visual>
+      <geometry>
+         <box size=".28 .21 .60"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <box size=".28 .1 .60"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+    <gazebo reference="laser_mount">
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+
+
+
+   
+<!-- Joints -->
+
+  <joint name="front_wheel_base_to_base_link" type="fixed">
+    <parent link="base_link"/>
+    <child link="front_wheel_base"/>
+    <origin xyz=".23 0 -.24" rpy="0 0 0"/>
+  </joint>
+
+  <joint name="back_wheel_base_to_base_link" type="fixed">
+    <parent link="base_link"/>
+    <child link="back_wheel_base"/>
+    <origin xyz="-.23 0 -.24" rpy="0 0 0"/>
+  </joint>
+
+ <joint name="back_wheel_base_to_blwheel" type="continuous">
+    <parent link="back_wheel_base"/>
+    <child link="blwheel"/>
+      <axis xyz="0 1 0" />
+    <origin xyz="0 .15 -.18" rpy="0 0 0"/>
+  </joint>
+
+ <joint name="back_wheel_base_to_brwheel" type="continuous">
+    <parent link="back_wheel_base"/>
+    <child link="brwheel"/>
+      <axis xyz="0 1 0" />
+    <origin xyz="0 -.15 -.18"  rpy="0 0 0"/>
+  </joint>
+
+   
+  <joint name="front_wheel_base_to_cflwheel" type="fixed">
+    <parent link="front_wheel_base"/>
+    <child link="cflwheel"/>
+    <origin rpy="-1.57079632679 0 0" xyz="0 -.15 -.18"/>
+  </joint>
+  
+  <joint name="front_wheel_base_to_cfrwheel" type="fixed">
+    <parent link="front_wheel_base"/>
+    <child link="cfrwheel"/>
+    <origin xyz="0 .15 -.18" rpy="-1.57079632679 0 0"/>
+  </joint>
+  
+
+  <joint name="screen_to_base_link" type="fixed">
+    <parent link="base_link"/>
+    <child link="screen"/>
+    <origin xyz=".27 0 .155" rpy="0 0 0"/>
+  </joint>
+
+   <joint name="laser_mount_to_base_link" type="fixed">
+    <parent link="base_link"/>
+    <child link="laser_mount"/>
+    <origin xyz="0 0 .155" rpy="0 0 0"/>
+  </joint>
+
+<gazebo reference="cfrwheel">
+    
+    <material>Gazebo/Red</material>
+  </gazebo>
+
+<gazebo reference="cflwheel">
+  
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+<!--Plugins -->
+
+
+<gazebo>
+ <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+
+      <rosDebugLevel>Debug</rosDebugLevel>
+      <publishWheelTF>false</publishWheelTF>
+      <robotNamespace>/</robotNamespace>
+      <publishTf>1</publishTf>
+      <publishWheelJointState>false</publishWheelJointState>
+      <alwaysOn>true</alwaysOn>
+      <updateRate>100.0</updateRate>
+      <rightJoint>back_wheel_base_to_brwheel</rightJoint>
+      <leftJoint>back_wheel_base_to_blwheel</leftJoint>
+      <wheelSeparation>1.6</wheelSeparation>
+      <wheelDiameter>1.6</wheelDiameter>
+      <broadcastTF>1</broadcastTF>
+      <wheelTorque>30</wheelTorque>
+      <wheelAcceleration>1.8</wheelAcceleration>
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryFrame>odom</odometryFrame> 
+      <odometryTopic>odom</odometryTopic> 
+      <robotBaseFrame>base_link</robotBaseFrame>
+    </plugin>     
+
+</gazebo> 
+
+</robot> 
+
+
