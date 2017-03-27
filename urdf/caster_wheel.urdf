@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<robot name="iggy">
+
+
+ <link name="base_link">
+    <visual>
+      <geometry>
+         <box size=".5 .5 .5"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <box size=".5 .5 .5"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="5"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>  
+
+<link name="middle_link">
+    <visual>
+      <geometry>
+         <box size=".7 .1 .7"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <box size=".7 .1 .7"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="5"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+
+<link name="caster_link">
+    <visual>
+      <origin rpy="1.57079632679 0 0" xyz="0 0.02 0"/>
+      <geometry>
+        <sphere radius="0.2"/> 
+      </geometry>
+      <material name="Black"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.2"/>
+      </geometry>
+      <origin rpy="1.57079632679 0 0" xyz="0 0.02 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
+    </inertial>
+  </link>
+  <joint name="wheel_joint" type="fixed">
+    <parent link="middle_link"/>
+    <child link="caster_link"/>
+    <origin xyz="0 0 0" rpy="-1.57079632679 0 0"/>
+  </joint>
+  <gazebo reference="caster_front_link">
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+
+
+<joint name="top_joint" type="revolute">
+        <axis xyz="0 1 0"/>
+        <limit effort="1000.0" lower="0.0" upper="0.548" velocity="0.5"/>
+        <origin rpy="0 0 0" xyz="0.0 -.25 0.0 "/>
+        <parent link="base_link"/>
+        <child link="middle_link"/>
+      </joint>
+  
+
+
+</robot> 
+
+
